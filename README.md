@@ -50,8 +50,8 @@ After some compile time (give it 10 mins if your area is big), your OSRM API sho
 
 Each commandline option explained:
 
-- `--rm -it` - runs as an interactive terminal, and upon termination closes the container. Good for development. When deploying, you'll want to replace `--rm it` with `-d` so it runs detached as a background process.
-- `-p 5000:5000` - **Port**: maps your system's port number to docker container's internal port number. If you want to deploy on another port say 8800, use: `-p 8800:5000`
+- `--rm -it` - runs as an interactive terminal, and upon termination closes the container. Good for development. When deploying, you'll want to replace `--rm -it` with `-d` so it runs detached as a background process.
+- `-p 5000:5000` - **Port mapping**: Change the left side number if you want to deploy on another port. Like: to deplot on :8000, `-p 8000:5000`
 - `-v $(pwd)/data:/data` - **Volume**: mounts the data/ folder in your current directory as a persistent storage volume used by the program. You'll see a lot of files collecting there when you run.
 - `-v $(pwd)/profiles:/profiles` - mounts the profiles/ folder in this repo (should also be in your current directory) likewise.
 - `-e PBFURL='https://server.nikhilvj.co.in/dump/delhi.pbf'` - **ENV**: Instructs the program to download and use this PBF as source data. This is passed in as an environment variable (for the compose/kubernetes folks)
@@ -78,7 +78,7 @@ Each commandline option explained:
 
 - `-p 9966:9966` : Port mapping. Change the left side number if you want to deploy on another port.
 - `-e OSRM_BACKEND='http://localhost:5000'` : To tell the frontend where the API is. If you've deployed it on cloud, use the public IP / URL.
-- `-e OSRM_CENTER='28.6,77.26'` : Starting lat-long when you open o browser
+- `-e OSRM_CENTER='28.6,77.26'` : Starting lat-long when you open on browser. These are delhi's lat-longs; replace with yours.
 - `-e OSRM_ZOOM='11'` : Starting zoom level
 
 again, change `--rm -it` to `-d` to detach the container and run it in background instead of on an active terminal (imp when deploying)
