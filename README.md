@@ -44,7 +44,7 @@ docker run \
 	-v $(pwd)/data:/data \
 	-v $(pwd)/profiles:/profiles \
 	-e PBFURL='https://server.nikhilvj.co.in/dump/sikkim.pbf' \
-	-e PROFILE='/profiles/car-modified.lua'
+	-e PROFILE='/profiles/car-modified.lua' \
 	osrm_custom_pbf
 ```
 
