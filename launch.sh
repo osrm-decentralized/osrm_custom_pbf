@@ -11,8 +11,10 @@ profile=${PROFILE:-/profiles/car-modified.lua}
 
 
 # downloading OSM data from URL. Saves as area.pbf for simplicity in later commands.
-wget -N --timeout=20 -O /data/area.pbf ${OSMPBF}
-
+cd /data/
+wget -N --timeout=20 ${OSMPBF}
+# keeping original filename to enable -N key for skipping dload if already done
+cp "${OSMPBF##*/}" area.pbf
 
 # compiling commands of OSRM - builds the graph
 osrm-extract -p ${profile} /data/area.pbf
